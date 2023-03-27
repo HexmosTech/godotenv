@@ -195,7 +195,17 @@ func loadFile(filename string, overload bool) error {
 	}
 
 	for key, value := range envMap {
-		if !currentEnv[key] || overload {
+		if len(value) > 0 && value[0] == '`' && value[len(value)-1] == '`' {
+			cmdStr := value[1 : len(value)-1] // remove backticks
+			cmd := exec.Command("/bin/sh", "-c", cmdStr)
+			out, err := cmd.Output()
+			if err != nil {
+				fmt.Println("Error running command:", err)
+			} else {
+				outStr := string(bytes.TrimSpace(out))
+				_ = os.Setenv(key, outStr)
+			}
+		} else {
 			_ = os.Setenv(key, value)
 		}
 	}

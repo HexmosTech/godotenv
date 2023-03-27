@@ -218,6 +218,15 @@ func TestSubstitutions(t *testing.T) {
 	loadEnvAndCompareValues(t, Load, envFileName, expectedValues, noopPresets)
 }
 
+func TestCommands(t *testing.T) {
+	envFileName := "fixtures/command.env"
+	expectedValues := map[string]string{
+		"HELLO": "hello",
+	}
+
+	loadEnvAndCompareValues(t, Load, envFileName, expectedValues, noopPresets)
+}
+
 func TestExpanding(t *testing.T) {
 	tests := []struct {
 		name     string
