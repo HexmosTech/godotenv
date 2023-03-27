@@ -17,19 +17,19 @@ There is test coverage and CI for both linuxish and Windows environments, but I 
 As a library
 
 ```shell
-go get github.com/joho/godotenv
+go get github.com/HexmosTech/godotenv
 ```
 
 or if you want to use it as a bin command
 
 go >= 1.17
 ```shell
-go install github.com/joho/godotenv/cmd/godotenv@latest
+go install github.com/HexmosTech/godotenv/cmd/godotenv@latest
 ```
 
 go < 1.17
 ```shell
-go get github.com/joho/godotenv/cmd/godotenv
+go get github.com/HexmosTech/godotenv/cmd/godotenv
 ```
 
 ## Usage
